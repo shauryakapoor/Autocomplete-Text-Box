@@ -1,5 +1,6 @@
 import React from 'react'
 import { RegExp } from 'core-js';
+import { __values } from 'tslib';
 
 export default class AutoCompleteText extends React.Component {
     constructor (props) {
@@ -13,6 +14,7 @@ export default class AutoCompleteText extends React.Component {
         ];
         this.state = {
             suggestions: [],
+            text : '',
         };
     }
 
@@ -23,7 +25,7 @@ export default class AutoCompleteText extends React.Component {
             const regex = new RegExp(`^${value}`, 'i');
             suggestions = this.items.sort().filter(v => regex.test(v));
         }
-        this.setState(() => ({ suggestions }));
+        this.setState(() => ({ suggestions, text: value }));
     }
 
     renderSuggestions () {
@@ -39,9 +41,10 @@ export default class AutoCompleteText extends React.Component {
     }
 
     render () {
+        const { text } = this.state;
         return (
             <div>
-                <input onChange={this.onTextChanged} type="text"/>
+                <input value={text} onChange={this.onTextChanged} type="text"/>
                 {this.renderSuggestions()}
             </div>
         )
