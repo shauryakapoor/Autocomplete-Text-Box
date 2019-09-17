@@ -1,13 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
-import HideableText from './HideableText';
+//import HideableText from './HideableText';
 import AutoCompleteText from './AutoCompleteText';
 
 function App() {
   return (
     <div className="App">
-      <AutoCompleteText />
+      <div className="App-Component">
+        <div className="App-Component">
+          <AutoCompleteText />
+        </div>
+      </div>
     </div>
   );
 }

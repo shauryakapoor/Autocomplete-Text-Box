@@ -1,6 +1,7 @@
 import React from 'react'
 import { RegExp } from 'core-js';
-import { __values } from 'tslib';
+//import { __values } from 'tslib';
+import './AutoCompleteText.css';
 
 export default class AutoCompleteText extends React.Component {
     constructor (props) {
@@ -44,13 +45,13 @@ export default class AutoCompleteText extends React.Component {
             <ul>
                 {suggestions.map((item) => <li onClick={() => this.suggestionSelected(item)}>{item}</li>)}
             </ul>
-        )
+        );
     }
 
     render () {
         const { text } = this.state;
         return (
-            <div>
+            <div className="AutoCompleteText">
                 <input value={text} onChange={this.onTextChanged} type="text"/>
                 {this.renderSuggestions()}
             </div>
