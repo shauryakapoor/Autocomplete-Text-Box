@@ -28,6 +28,13 @@ export default class AutoCompleteText extends React.Component {
         this.setState(() => ({ suggestions, text: value }));
     }
 
+    suggestionSelected (value) {
+        this.setState(() => ({
+            text: value,
+            suggestions: [],
+        }))
+    }
+
     renderSuggestions () {
         const { suggestions } = this.state;
         if ( suggestions.length === 0) {
@@ -35,7 +42,7 @@ export default class AutoCompleteText extends React.Component {
         }
         return (
             <ul>
-                {suggestions.map((item) => <li>{item}</li>)}
+                {suggestions.map((item) => <li onClick={() => this.suggestionSelected(item)}>{item}</li>)}
             </ul>
         )
     }
